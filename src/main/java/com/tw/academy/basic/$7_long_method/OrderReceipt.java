@@ -20,15 +20,20 @@ public class OrderReceipt {
         printHeader(output);
 
         printCustomerNameAndAddress(output);
-        for (LineItem lineItem : order.getLineItems()) {
-            printLineItems(output, lineItem);
-        }
+
+        printLineItemsForReceipt(output);
 
         printTotal(output, calculateTotal(order.getLineItems(), TOTAL_SALES_TAX_PERCENT), SALES_TAX);
 
         printTotal(output, calculateTotal(order.getLineItems(), TOTAL_AMOUNT_PERCENT), TOTAL_AMOUNT);
 
         return output.toString();
+    }
+
+    private void printLineItemsForReceipt(StringBuilder output) {
+        for (LineItem lineItem : order.getLineItems()) {
+            printLineItems(output, lineItem);
+        }
     }
 
     private StringBuilder printTotal(StringBuilder output, double total, String title) {
