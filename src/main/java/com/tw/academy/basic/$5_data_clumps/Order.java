@@ -8,12 +8,12 @@ public class Order {
     private String buyerPhoneNumber;
     private String buyerAddress;
 
-    public Order(int orderNumber, String buyerName, String buyerPhoneNumber, String buyerAddress) {
+    public Order(int orderNumber, Person person) {
         this.orderNumber = orderNumber;
 
-        this.buyerName = buyerName;
-        this.buyerPhoneNumber = buyerPhoneNumber;
-        this.buyerAddress = buyerAddress;
+        this.buyerName = person.getBuyerName();
+        this.buyerPhoneNumber = person.getBuyerPhoneNumber();
+        this.buyerAddress = person.getBuyerAddress();
     }
 
     public String confirm(){
