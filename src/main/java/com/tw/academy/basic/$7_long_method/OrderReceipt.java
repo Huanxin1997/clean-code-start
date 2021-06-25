@@ -12,8 +12,7 @@ public class OrderReceipt {
 
         printHeader(output);
 
-        output.append(order.getCustomerName());
-        output.append(order.getCustomerAddress());
+        printCustomerNameAndAddress(output);
 
         double totSalesTx = 0d;
         double tot = 0d;
@@ -26,10 +25,20 @@ public class OrderReceipt {
             tot += lineItem.totalAmount() + salesTax;
         }
 
-        output.append("Sales Tax").append('\t').append(totSalesTx);
+        printTotal(output, totSalesTx, "Sales Tax");
 
-        output.append("Total Amount").append('\t').append(tot);
+        printTotal(output, tot, "Total Amount");
+
         return output.toString();
+    }
+
+    private StringBuilder printTotal(StringBuilder output, double total, String title) {
+        return output.append(title).append('\t').append(total);
+    }
+
+    private void printCustomerNameAndAddress(StringBuilder output) {
+        output.append(order.getCustomerName());
+        output.append(order.getCustomerAddress());
     }
 
     private void printHeader(StringBuilder output) {
