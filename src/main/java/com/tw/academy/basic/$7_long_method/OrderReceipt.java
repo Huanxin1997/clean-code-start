@@ -9,6 +9,8 @@ public class OrderReceipt {
 
     private double TOTAL_SALES_TAX_PERCENT = 0d;
     private double TOTAL_AMOUNT_PERCENT = 0d;
+    private final String SALES_TAX = "Sales Tax";
+    private final String TOTAL_AMOUNT = "Total Amount";
 
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
@@ -25,9 +27,9 @@ public class OrderReceipt {
             TOTAL_AMOUNT_PERCENT += lineItem.totalAmount() + salesTax;
         }
 
-        printTotal(output, TOTAL_SALES_TAX_PERCENT, "Sales Tax");
+        printTotal(output, TOTAL_SALES_TAX_PERCENT, SALES_TAX);
 
-        printTotal(output, TOTAL_AMOUNT_PERCENT, "Total Amount");
+        printTotal(output, TOTAL_AMOUNT_PERCENT, TOTAL_AMOUNT);
 
         return output.toString();
     }
