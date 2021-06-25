@@ -3,22 +3,20 @@ package com.tw.academy.basic.$7_long_method;
 import java.util.List;
 
 public class Order {
-    String customerName;
-    String address;
     List<LineItem> lineItems;
+    private final Customer customer;
 
     public Order(Customer customer, List<LineItem> lineItems) {
-        this.customerName = customer.getCustomerName();
-        this.address = customer.getAddress();
+        this.customer = customer;
         this.lineItems = lineItems;
     }
 
     public String getCustomerName() {
-        return customerName;
+        return customer.getCustomerName();
     }
 
     public String getCustomerAddress() {
-        return address;
+        return customer.getAddress();
     }
 
     public List<LineItem> getLineItems() {
