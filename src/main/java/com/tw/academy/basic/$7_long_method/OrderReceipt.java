@@ -7,27 +7,27 @@ public class OrderReceipt {
         this.order = order;
     }
 
+    private double TOTAL_SALES_TAX_PERCENT = 0d;
+    private double TOTAL_AMOUNT_PERCENT = 0d;
+
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
 
         printHeader(output);
 
         printCustomerNameAndAddress(output);
-
-        double totSalesTx = 0d;
-        double tot = 0d;
         for (LineItem lineItem : order.getLineItems()) {
             printLineItems(output, lineItem);
 
             double salesTax = lineItem.totalAmount() * .10;
-            totSalesTx += salesTax;
+            TOTAL_SALES_TAX_PERCENT += salesTax;
 
-            tot += lineItem.totalAmount() + salesTax;
+            TOTAL_AMOUNT_PERCENT += lineItem.totalAmount() + salesTax;
         }
 
-        printTotal(output, totSalesTx, "Sales Tax");
+        printTotal(output, TOTAL_SALES_TAX_PERCENT, "Sales Tax");
 
-        printTotal(output, tot, "Total Amount");
+        printTotal(output, TOTAL_AMOUNT_PERCENT, "Total Amount");
 
         return output.toString();
     }
