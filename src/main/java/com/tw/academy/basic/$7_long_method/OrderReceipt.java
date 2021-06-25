@@ -45,11 +45,7 @@ public class OrderReceipt {
     }
 
     private double calculateTotal(List<LineItem> lineItems, double percent) {
-        double total = 0d;
-        for (int i = 0; i < lineItems.size(); i++) {
-            total += lineItems.get(i).totalAmount() * percent;
-        }
-        return total;
+        return lineItems.stream().mapToDouble(lineItem -> lineItem.totalAmount() * percent).sum();
     }
 
     private void printLineItems(StringBuilder output, LineItem lineItem) {
